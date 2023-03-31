@@ -19,20 +19,24 @@ export class Favorites {
     try {
 
       const userExist = this.entries.find(entry => entry.login === username)
+      const inputSearch = this.root.querySelector('#input-search');
 
       if(userExist) {
+        inputSearch.value = "";
         throw new Error(`${username} já foi adicionado na sua lista de favoritos!`)
       }
 
       const user = await GithubUser.search(username)
       
       if(user.login === undefined) {
+        inputSearch.value = "";
         throw new Error(`${username} não foi encontrado, tente novamente!`)
       }
       
       this.entries = [user, ...this.entries]
       this.update()
       this.save()
+      inputSearch.value = "";
 
     } catch(error) {
       alert(error.message)
@@ -41,10 +45,10 @@ export class Favorites {
   }
   
   delete(user) {
-    const filteredEntries = this.entries
+    this.entries = this.entries
       .filter(entry => entry.login !== user.login) 
   
-    this.entries = filteredEntries
+    
     this.update()
     this.save()
   }
@@ -53,7 +57,7 @@ export class Favorites {
 
 export class FavoritesView extends Favorites {
   constructor(root) {
-    super(root)
+    super(root);
 
     this.tbody = this.root.querySelector('table tbody')
 
@@ -84,11 +88,11 @@ export class FavoritesView extends Favorites {
         
         row.querySelector('.user img').src = `https://github.com/${user.login}.png`
         row.querySelector('.user img').alt = `Imagem de ${user.name}`
-        row.querySelector('.user p').textContent = user.name 
+        row.querySelector('.user p').textContent = `${user.name}`
         row.querySelector('.user a').href = `https://github.com/${user.login}`
         row.querySelector('.user span').textContent = `/${user.login}` 
-        row.querySelector('.repositories').textContent = user.public_repos
-        row.querySelector('.followers').textContent = user.followers
+        row.querySelector('.repositories').textContent = `${user.public_repos}`
+        row.querySelector('.followers').textContent = `${user.followers}`
 
         row.querySelector('.remove').onclick = () => {
           const isOk = confirm('Tem certeza que deseja deletar essa linha?')
