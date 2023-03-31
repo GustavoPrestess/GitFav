@@ -1,0 +1,196 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+
+  --ff-primary:'Roboto', sans-serif;
+  --text-color: #E1E1E6;
+
+  --bg-color: #000000;
+  --search-color: #06181C;
+  --thead-color: #092D38;
+  --tbody-primary-color: #06161B80;
+  --tbody-secondary-color: #06181C;
+}
+
+body {
+  font-family: 1.6rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+body * {
+  font-family: var(--ff-primary);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.app {
+  padding: 8rem 5rem;
+  max-width: 112rem;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  
+  margin-bottom: 8.7rem;
+}
+
+header input {
+  color: #ffff;
+}
+
+.search {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.search input {
+  height: 4.8rem;
+  width: 46.2rem;
+  padding: 1.6rem;
+
+  border-radius: 0.5rem;
+  border: none;
+
+  background-color: var(--search-color);
+}
+
+.search button {
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.search button:hover svg rect {
+  transition: 0.5s;
+  fill: #ffff;
+}
+
+.search button:hover svg path {
+  transition: 0.5s;
+  fill: #065E7C;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 1rem 2rem -1rem rgba(0, 0, 0, 0.3);
+}
+
+table * {
+  font-size: 2.0rem;
+  color: var(--text-color);
+  text-align: left;
+}
+
+
+table th {
+  background-color: var(--thead-color);
+  font-weight: 70rem;
+  height: 6.4rem;
+}
+
+table th:first-child {
+  border-top-left-radius: 1.2rem;
+  padding: 0 10rem 0 4rem;
+}
+
+table th:last-child {
+  border-top-right-radius: 1.2rem;
+  padding: 0 0 0 3rem;
+}
+
+table td {
+  padding: 1.5rem;
+  text-align: left; 
+}
+
+table td:first-child {
+  padding: 2rem 0 2rem 4rem;
+}
+
+
+table tbody tr:nth-child(even) {
+  background: var(--tbody-primary-color);
+}
+
+table tbody tr:nth-child(odd) {
+  background: var(--tbody-secondary-color);
+}
+
+td.user {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+td.user img {
+  width: 5.6rem;
+  height: 5.6rem;
+
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+td.user a {
+  text-decoration: none;
+}
+
+td.user a p {
+  font-weight: bold;
+}
+
+td .remove {
+  background: none;
+  border: none;
+
+  color: red;
+
+  cursor: pointer;
+}
+
+.noFavorites {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40.4rem;
+
+  gap: 4rem;
+
+  color: #4E5455;
+}
+
+.noFavorites img {
+  width: 13.5rem;
+  height: 12.5rem;
+}
+
+.noFavorites h1 {
+  font-size: 4rem;
+  line-height: 2.5rem;
+
+  color: #4E5455;
+  font-family: var(--ff-primary);
+}
+
