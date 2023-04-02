@@ -18,7 +18,7 @@ export class Favorites {
   async add(username) {
     try {
 
-      const userExist = this.entries.find(entry => entry.login === username)
+      const userExist = this.entries.find(entry => entry.login.toUpperCase() === username.toUpperCase())
       const inputSearch = this.root.querySelector('#input-search');
 
       if(userExist) {
@@ -95,7 +95,7 @@ export class FavoritesView extends Favorites {
         row.querySelector('.followers').textContent = `${user.followers}`
 
         row.querySelector('.remove').onclick = () => {
-          const isOk = confirm('Tem certeza que deseja deletar essa linha?')
+          const isOk = confirm(`Tem certeza que deseja deletar ${user.name}?`)
           if(isOk) {
             this.delete(user)
           }
